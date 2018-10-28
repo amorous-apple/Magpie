@@ -1,0 +1,26 @@
+{
+  "name": "magpie",
+  "version": "1.0.0",
+  "description": "A Discord bot written in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lodelite/Magpie.git"
+  },
+  "author": "Aidan (Lodelite)",
+  "contributors": [
+    "Antonio (bawbby)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lodelite/Magpie/issues"
+  },
+  "homepage": "https://github.com/Lodelite/Magpie#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "typescript": "^3.1.3"
+  }
+}
