@@ -28,7 +28,7 @@ export class CommandHandler {
         let channel = message.channel;
         let guild = message.guild;
 
-        if (content.startsWith(this.prefix) || author.bot) {
+        if (!content.startsWith(this.prefix) || author.bot) {
             return;
         }
 
