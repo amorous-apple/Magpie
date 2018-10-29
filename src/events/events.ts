@@ -8,11 +8,11 @@ export function addListeners(client: Client) {
     });
 
     client.on("message", (message: Message) => {
-        if (message.content.includes("moonlark ping")) {
+        if (message.content.includes("magpie ping")) {
             message.channel.send("bird");
         }
 
-        if (message.content.startsWith("moonlark hello")) {
+        if (message.content.startsWith("magpie hello")) {
             message.channel.send("ur mum gae, lmao");
         }
     });
