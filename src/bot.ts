@@ -26,7 +26,8 @@ export class Bot {
 
         this.client.registry
             .registerGroups([
-                ["basic", "Basic"]
+                ["basic", "Basic"],
+                ["moderation", "Moderation"]
             ])
             .registerDefaults()
             .registerCommandsIn(join(__dirname, "Commands"));
