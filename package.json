@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p .",
     "run": "node out/index.js",
-    "start": "npm run script build && npm run script run"
+    "start": "npm run-script build && npm run-script run"
   },
   "repository": {
     "type": "git",
