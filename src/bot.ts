@@ -17,9 +17,7 @@ export class Bot {
         readdir(join(__dirname, "./events/"), "utf8", (err: NodeJS.ErrnoException, files: string[]) => { 
             files.forEach(file => {
                 if (!file.endsWith(".js")) return;
-                let eventName: string = file.split(".")[0];
-                const event: any = require(`./events/${file}`);
-                this.client.on(eventName, event.bind(null, this.client));
+                this.client.on(file.split(".")[0], require(`./events/${file}`).bind(null, this.client));
                 delete require.cache[require.resolve(`./events/${file}`)];
             });
         });
