@@ -1,3 +1,5 @@
+import { Guild, User, TextChannel } from "discord.js";
+
 import { Command } from "./command";
 
 export class PingCommand extends Command {
@@ -5,15 +7,17 @@ export class PingCommand extends Command {
         super("ping");
     }
 
-    run(args: string[], channel: import("discord.js").Channel, author: import("discord.js").User, guild?: import("discord.js").Guild | undefined): void {
-        throw new Error("Method not implemented.");
+    run(args: string[], channel: TextChannel, author: User, guild?: Guild | undefined): void {
+        channel.send("caw");
     }
 
     description(): string {
-        throw new Error("Method not implemented.");
+        return "Just a good ol' test ping"
     }
 
     usages(): string[] {
-        throw new Error("Method not implemented.");
+        return new Array<string>(
+            "ping"
+        );
     }
 }
