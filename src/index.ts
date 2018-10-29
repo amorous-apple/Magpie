@@ -1,10 +1,5 @@
-import { Client } from "discord.js";
-import { addListeners } from "./events/events";
-
+import { Bot } from "./bot";
 const { token }: { token: string } = require("../settings.json");
 
-const client = new Client();
-
-addListeners(client);
-
-client.login(token);
+const bot: Bot = new Bot();
+bot.run(token);
