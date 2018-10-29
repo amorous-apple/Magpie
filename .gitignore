@@ -1,6 +1,8 @@
 # Build files
 node_modules/
 out/
+.vscode/
+.git/
 
-#sensitive
+# Sensitive files
 settings.json
