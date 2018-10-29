@@ -1,7 +1,7 @@
 import { CommandoClient } from "discord.js-commando";
 import { readdir } from "fs";
 import { join } from "path";
-const { prefix }: { prefix: string } = require("../settings.json");
+const { prefix, owner }: { prefix: string, owner: string } = require("../settings.json");
 
 export class Bot {
     private client: CommandoClient;
@@ -10,16 +10,15 @@ export class Bot {
         console.log("Starting Magpie...");
 
         this.client = new CommandoClient({
-            owner: "461242998433382421",
-            commandPrefix: prefix,
+            owner: owner,
+            commandPrefix: prefix
         });
 
-        readdir(join(__dirname, "./events/"), "utf8", (err, files) => { 
+        readdir(join(__dirname, "./events/"), "utf8", (err: NodeJS.ErrnoException, files: string[]) => { 
             files.forEach(file => {
                 if (!file.endsWith(".js")) return;
-                console.log(file);
-                let eventName = file.split(".")[0];
-                const event = require(`./events/${file}`);
+                let eventName: string = file.split(".")[0];
+                const event: any = require(`./events/${file}`);
                 this.client.on(eventName, event.bind(null, this.client));
                 delete require.cache[require.resolve(`./events/${file}`)];
             });
@@ -27,7 +26,7 @@ export class Bot {
 
         this.client.registry
             .registerGroups([
-                ["basic", "Basic"],
+                ["basic", "Basic"]
             ])
             .registerDefaults()
             .registerCommandsIn(join(__dirname, "Commands"));
