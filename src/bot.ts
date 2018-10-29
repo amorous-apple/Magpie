@@ -7,7 +7,7 @@ export class Bot {
     private client: CommandoClient;
 
     public async run(token: string) {
-        console.log("Starting Magpie...");
+        console.log("Starting Moonlark...");
 
         this.client = new CommandoClient({
             owner: owner,
