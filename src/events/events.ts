@@ -12,7 +12,7 @@ export function addListeners(client: Client) {
             message.channel.send("caw");
         }
 
-        if (message.content.includes("magpie hello")) {
+        if (message.content.startsWith("/magpie hello")) {
             message.channel.send("ur mum gae, lmao");
         }
     });
