@@ -23,14 +23,17 @@ export class CommandHandler {
     }
 
     process(message: Message) {
-        let content = message.content;  
+        let messageRaw = message.content;  
         let author = message.author;
-        let channel = message.channel;
-        let guild = message.guild;
-
-        if (!content.startsWith(this.prefix) || author.bot) {
+        
+        if (!messageRaw.startsWith(this.prefix) || author.bot) {
             return;
         }
+
+        let content = messageRaw.substring(this.prefix.length).trim();
+
+        let channel = message.channel;
+        let guild = message.guild;
 
         let arr = content.split(" ", 2);
         let command = arr[0];
@@ -44,7 +47,7 @@ export class CommandHandler {
 
             cmd.run(args, channel, author, guild);
         } else {
-            message.channel.send("Error: command `${command}` was not found")
+            message.channel.send(`Error: command ${command} was not found`)
         }
     }
 }
