@@ -1,13 +1,13 @@
 import { CommandoClient } from "discord.js-commando";
 import { readdir } from "fs";
 import { join } from "path";
-const { prefix, owner }: { prefix: string, owner: string } = require("../settings.json");
+const { prefix, owner, name }: { prefix: string, owner: string, name:string } = require("../settings.json");
 
 export class Bot {
     private client: CommandoClient;
 
     public async run(token: string) {
-        console.log("Starting Moonlark...");
+        console.log(`Starting ${name}...`);
 
         this.client = new CommandoClient({
             owner: owner,
