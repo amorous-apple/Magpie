@@ -1,4 +1,4 @@
-import { User, Guild, TextChannel } from "discord.js";
+import { User, Guild, Channel } from "discord.js";
 
 export abstract class Command {
     public readonly name: string
@@ -7,7 +7,7 @@ export abstract class Command {
         this.name = name;
     }
 
-    abstract run(args: string[], channel: TextChannel, author: User, guild?: Guild): void
+    abstract run(args: string[], channel: Channel, author: User, guild?: Guild): void
 
     abstract description(): string;
 

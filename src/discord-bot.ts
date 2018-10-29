@@ -16,7 +16,7 @@ export class DiscordBot {
     private setUpEvents() {
         this.client.on("message", (message: Message) => {
             this.commandHandler.process(message);
-        })
+        });
     }
 
     public start() {

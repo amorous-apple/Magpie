@@ -1,4 +1,4 @@
-import { Guild, User, TextChannel } from "discord.js";
+import { Guild, User, TextChannel, Channel, DMChannel } from "discord.js";
 
 import { Command } from "./command";
 
@@ -7,8 +7,18 @@ export class PingCommand extends Command {
         super("ping");
     }
 
-    run(args: string[], channel: TextChannel, author: User, guild?: Guild | undefined): void {
-        channel.send("caw");
+    run(args: string[], channel: Channel, author: User, guild?: Guild | undefined): void {
+        switch (channel.type) {
+            case "text": {
+                let c = channel as TextChannel
+                c.send("caw");
+            } break;
+
+            case "dm": {
+                let c = channel as DMChannel;
+                c.send("caw")
+            } break
+        }
     }
 
     description(): string {

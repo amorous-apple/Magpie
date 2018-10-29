@@ -22,18 +22,26 @@ export class CommandHandler {
         this.commands.set(command.name, command);
     }
 
+    private isCommand(msgContent: string): boolean {
+        return msgContent.startsWith(this.prefix);
+    }
+
     process(message: Message) {
-        let messageRaw = message.content;  
+        let messageRaw = message.content.toLowerCase().trim();
+
         let author = message.author;
-        
-        if (!messageRaw.startsWith(this.prefix) || author.bot) {
+
+        if (!this.isCommand(messageRaw) || author.bot) {
             return;
         }
 
         let content = messageRaw.substring(this.prefix.length).trim();
-
         let channel = message.channel;
         let guild = message.guild;
+
+        if (content === "") {
+            return;
+        }
 
         let arr = content.split(" ", 2);
         let command = arr[0];
@@ -47,7 +55,7 @@ export class CommandHandler {
 
             cmd.run(args, channel, author, guild);
         } else {
-            message.channel.send(`Error: command ${command} was not found`)
+            message.channel.send(`Error: command \`${command}\` was not found`)
         }
     }
 }
